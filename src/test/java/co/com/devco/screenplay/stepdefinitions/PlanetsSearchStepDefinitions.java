@@ -1,5 +1,6 @@
 package co.com.devco.screenplay.stepdefinitions;
 
+import co.com.devco.screenplay.exceptions.PlanetInvalidResponse;
 import co.com.devco.screenplay.questions.ThePlanet;
 import co.com.devco.screenplay.tasks.SearchAPlanet;
 import cucumber.api.java.Before;
@@ -9,6 +10,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 import net.thucydides.core.util.EnvironmentVariables;
 
+import static co.com.devco.screenplay.exceptions.PlanetInvalidResponse.INVALID_PLANET_NAME;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.hamcrest.CoreMatchers.is;
 
@@ -31,7 +33,7 @@ public class PlanetsSearchStepDefinitions {
 
     @Then("I should see that the planet name is (.*)")
     public void iShouldSeeThatThePlanetName(String planetName) {
-        JENN.should(seeThat(ThePlanet.name(), is(planetName)));
+        JENN.should(seeThat(ThePlanet.name(), is(planetName)).orComplainWith(PlanetInvalidResponse.class, INVALID_PLANET_NAME));
     }
 
 }
