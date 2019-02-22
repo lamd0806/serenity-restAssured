@@ -7,6 +7,6 @@ import static net.serenitybdd.rest.SerenityRest.lastResponse;
 public class ThePlanet {
 
     public static Question<String> name() {
-        return actor -> lastResponse().body().path("name");
+        return name -> lastResponse().body().path("name");
     }
 }
