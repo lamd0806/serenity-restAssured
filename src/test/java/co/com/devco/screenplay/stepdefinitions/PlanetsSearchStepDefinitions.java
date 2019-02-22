@@ -33,7 +33,8 @@ public class PlanetsSearchStepDefinitions {
 
     @Then("I should see that the planet name is (.*)")
     public void iShouldSeeThatThePlanetName(String planetName) {
-        JENN.should(seeThat(ThePlanet.name(), is(planetName)).orComplainWith(PlanetInvalidResponse.class, INVALID_PLANET_NAME));
+        JENN.should(seeThat("The planet name",
+                ThePlanet.name(), is(planetName)).orComplainWith(PlanetInvalidResponse.class, INVALID_PLANET_NAME));
     }
 
 }
