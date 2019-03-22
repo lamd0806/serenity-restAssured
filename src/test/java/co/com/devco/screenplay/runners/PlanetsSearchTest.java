@@ -8,7 +8,7 @@ import static cucumber.api.SnippetType.CAMELCASE;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(plugin = {"pretty"},
-        features = "classpath:features",
+        features = "src/test/resources/features/planets_search.feature",
         glue = {"co.com.devco.screenplay.stepdefinitions"},
         snippets = CAMELCASE)
 public class PlanetsSearchTest {
